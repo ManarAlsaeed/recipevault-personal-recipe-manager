@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RecipeVault</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>🍴 RecipeVault</h1>
+    <div id="filters">
+      <input type="text" id="searchIngredient" placeholder="Search by ingredient..." />
+      <select id="filterCategory">
+        <option value="">All Categories</option>
+        <option value="Breakfast">Breakfast</option>
+        <option value="Lunch">Lunch</option>
+        <option value="Dinner">Dinner</option>
+        <option value="Snack">Snack</option>
+        <option value="Vegan">Vegan</option>
+      </select>
+      <button onclick="loadRecipes()">Search</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="form-section">
+      <h2 id="form-title">Add New Recipe</h2>
+      <form id="recipeForm">
+        <input type="hidden" id="recipeId" />
+        <input type="text" id="title" placeholder="Title *" required />
+        <textarea id="description" placeholder="Description"></textarea>
+        <input type="number" id="prep_time" placeholder="Prep time (mins)" min="0"/>
+        <input type="number" id="servings" placeholder="Servings" min="1"/>
+        <select id="category">
+          <option value="">Select Category</option>
+          <option value="Breakfast">Breakfast</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
+          <option value="Snack">Snack</option>
+          <option value="Vegan">Vegan</option>
+        </select>
+        <textarea id="steps" placeholder="Steps (e.g. 1. Boil water...)"></textarea>
+
+        <h3>Ingredients</h3>
+        <div id="ingredients-list"></div>
+        <button type="button" onclick="addIngredientRow()">+ Add Ingredient</button>
+
+        <div id="form-actions">
+          <button type="submit">Save Recipe</button>
+          <button type="button" id="cancelBtn" onclick="resetForm()" style="display:none">Cancel</button>
+        </div>
+        <p id="formError" class="error"></p>
+      </form>
+    </section>
+
+    <section id="recipes-section">
+      <h2>My Recipes</h2>
+      <div id="recipeGrid"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
